@@ -8,9 +8,18 @@ namespace AppenninoInMovimento.MainPage
 {
     internal class SearchResultFormService
     {
-        public System.Data.DataTable LeggiDatiDT(string parametriLettura)
+        public System.Data.DataTable LeggiDatiDT(string parametriLettura, MainPage.MainPageForm.enum_TipoRicerca tipoRicerca)
         {
-            return new Attivita.AttivitaFormService().LeggiAttivita(parametriLettura); 
+            if (tipoRicerca == MainPageForm.enum_TipoRicerca.ATTIVITA)
+                return new Attivita.AttivitaFormService().LeggiAttivita(parametriLettura);
+            if (tipoRicerca == MainPageForm.enum_TipoRicerca.UTENTE)
+                return new Utente.UtenteFormService().LeggiUtenti(parametriLettura);
+            if (tipoRicerca == MainPageForm.enum_TipoRicerca.GRUPPO)
+                return new Gruppo.GruppoFormService().ReadsGroups(parametriLettura);
+            if (tipoRicerca == MainPageForm.enum_TipoRicerca.EVENTO)
+                return new Evento.EventoFormService().LeggiEventi(parametriLettura);
+
+            return new System.Data.DataTable();
         }
 
         public void RemoveSelectedItem(string ID, MainPage.MainPageForm.enum_TipoRicerca tipoRicerca)
@@ -22,11 +31,8 @@ namespace AppenninoInMovimento.MainPage
             }
             else if(tipoRicerca == MainPageForm.enum_TipoRicerca.UTENTE)
             {
-                var sql_string = new Utils.SQLString();
-                sql_string.addNewLine("DELETE FROM Utenti");
-                sql_string.addNewLine("WHERE username = '" + ID + "'");
-
-                new Utils.DBUtils().EseguiQuery(sql_string.Sql);
+                ParametriSessione.Username = ID.TrimStart();
+                new Utente.UtenteFormService().DeleteUser();
             }
             else if (tipoRicerca == MainPageForm.enum_TipoRicerca.EVENTO)
             {
@@ -36,12 +42,7 @@ namespace AppenninoInMovimento.MainPage
             else if (tipoRicerca == MainPageForm.enum_TipoRicerca.GRUPPO)
             {
                 ParametriSessione.ID_GRUPPO = Int32.Parse(ID);
-
-                var sql_string = new Utils.SQLString();
-                sql_string.addNewLine("DELETE FROM Attivita");
-                sql_string.addNewLine("WHERE idGruppo = " + ID);
-
-                new Utils.DBUtils().EseguiQuery(sql_string.Sql);
+                new Gruppo.GruppoFormService().DeleteGroup();
             }
         }
     }

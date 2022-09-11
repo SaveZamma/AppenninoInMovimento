@@ -25,12 +25,9 @@ namespace AppenninoInMovimento.Attivita
             if(ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.READ)
             {
                 fu.DisableControls(this);
-                fu.HideAndDisableControls(this.exit_btn);
-                fu.HideAndDisableControls(this.mdificaAttrezzaturaRiposo_btn);
-                fu.HideAndDisableControls(this.modificaAttrezzaturaMovimento_btn);
-                fu.HideAndDisableControls(this.modificaPasti_btn);
-                fu.HideAndDisableControls(this.modificaVestiario_btn);
                 fu.HideAndDisableControls(this.save_btn);
+                this.join_btn.Enabled =  true;
+                this.exit_btn.Enabled = true;
             }
         }
 
@@ -45,34 +42,6 @@ namespace AppenninoInMovimento.Attivita
             MOVIMENTO = 1,
             VESTIARIO = 2,
             RIPOSO = 3
-        }
-
-        private void modificaPasti_btn_Click(object sender, EventArgs e)
-        {
-            var nf = new NecessarioForm();
-            nf.tipoNecessario = enum_TipologiaNecessario.PASTI;
-            var res = nf.ShowDialog();
-        }
-
-        private void modificaVestiario_btn_Click(object sender, EventArgs e)
-        {
-            var nf = new NecessarioForm();
-            nf.tipoNecessario = enum_TipologiaNecessario.VESTIARIO;
-            var res = nf.ShowDialog();
-        }
-
-        private void modificaAttrezzaturaMovimento_btn_Click(object sender, EventArgs e)
-        {
-            var nf = new NecessarioForm();
-            nf.tipoNecessario = enum_TipologiaNecessario.MOVIMENTO;
-            var res = nf.ShowDialog();
-        }
-
-        private void mdificaAttrezzaturaRiposo_btn_Click(object sender, EventArgs e)
-        {
-            var nf = new NecessarioForm();
-            nf.tipoNecessario = enum_TipologiaNecessario.RIPOSO;
-            var res = nf.ShowDialog();
         }
 
         private void save_btn_Click(object sender, EventArgs e)
@@ -93,7 +62,54 @@ namespace AppenninoInMovimento.Attivita
             attivita.TipologiaZaino = this.zaino_txtbox.Text;
             attivita.Vestiario = this.vestiario_tb.Text;
 
-            new AttivitaFormService().ScriviAttivita(attivita);
+            if(ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.WRITE)
+                new AttivitaFormService().ScriviAttivita(attivita);
+            if (ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.UPDATE)
+                new AttivitaFormService().ModificaAttivita(attivita);
+        }
+
+        private void modificaLuogo_btn_Click(object sender, EventArgs e)
+        {
+            new Luogo.LuogoFrom().ShowDialog();
+        }
+
+        private void AttivitaForm_Load(object sender, EventArgs e)
+        {
+            if(ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.READ ||
+                ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.UPDATE)
+            {
+                this.PopolaPagina();
+            }
+        }
+
+        private void PopolaPagina()
+        {
+            DataRow res = new AttivitaFormService().LeggiSingleAttivita();
+
+            this.descrizione_txtbox.Text = res["descrizione"].ToString();
+            this.dataInizio_datepk.Value = DateTime.Parse(res["dataInizio"].ToString());
+            this.dataFine_datepk.Value = DateTime.Parse(res["dataFine"].ToString());
+            this.durata_num.Value = Int32.Parse( res["durata"].ToString());
+            this.difficolta_num.Value = Int32.Parse(res["difficolta"].ToString());
+            this.periodoConsigliato_txtbox.Text = res["periodoConsigliato"].ToString();
+            this.numPartecipanti_num.Value = Int32.Parse(res["partecipanti"].ToString());
+            this.vestiario_tb.Text = res["vestiario"].ToString();
+            this.movimento_tb.Text = res["attrezzaturaMovimento"].ToString();
+            this.riposo_tb.Text = res["attrezzaturaRiposo"].ToString();
+            this.pasti_tb.Text = res["pasti"].ToString();
+            this.pesoZaino_num.Value = Int32.Parse(res["pesoZaino"].ToString());
+            this.zaino_txtbox.Text = res["zaino"].ToString();
+            this.luogo_tb.Text = "";
+        }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void join_btn_Click(object sender, EventArgs e)
+        {
+            new AttivitaFormService().JoinAttivita();
         }
     }
 }

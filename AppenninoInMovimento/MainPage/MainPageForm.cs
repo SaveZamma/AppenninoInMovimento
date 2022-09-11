@@ -31,6 +31,10 @@ namespace AppenninoInMovimento.MainPage
             UTENTE = 2,
             GRUPPO = 3
         }
+        private void MainPageForm_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void ricercaAttivita_btn_Click(object sender, EventArgs e)
         {
@@ -55,21 +59,31 @@ namespace AppenninoInMovimento.MainPage
 
         private void searchUser_btn_Click(object sender, EventArgs e)
         {
-            var srf = new SearchResultForm("");
-            srf.tipoRicerca = enum_TipoRicerca.UTENTE;
-            var res = srf.ShowDialog();
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("WHERE 1 = 1");
+            sql_string.addNewLine("    AND nome LIKE '%" + this.nome_tb.Text + "%'");
+            sql_string.addNewLine("    AND cognome LIKE '%" + this.cognome_tb.Text + "%'");
+            sql_string.addNewLine("    AND username LIKE '%" + this.username_tb.Text + "%'");
+
+            new MainPageFormService().OpenUtentiSearchResult(sql_string.Sql);
         }
 
         private void searchEvents_btn_Click(object sender, EventArgs e)
         {
-            var srf = new SearchResultForm("");
-            srf.tipoRicerca = enum_TipoRicerca.EVENTO;
-            var res = srf.ShowDialog();
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("WHERE 1 = 1");
+            sql_string.addNewLine("    AND descrizione LIKE '%" + this.eventoDescrizione_tb.Text + "%'");
+
+            new MainPageFormService().OpenEventiSearchResult(sql_string.Sql);
         }
 
-        private void MainPageForm_Load(object sender, EventArgs e)
+        private void searchGroup_btn_Click(object sender, EventArgs e)
         {
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("WHERE 1 = 1");
+            sql_string.addNewLine("    AND nome LIKE '%" + this.descrizioneGruppo_tb.Text + "%'");
 
+            new MainPageFormService().OpenGroupSearchResult(sql_string.Sql);
         }
     }
 }

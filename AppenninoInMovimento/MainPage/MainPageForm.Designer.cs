@@ -50,6 +50,10 @@
             this.eventoDescrizione_lbl = new System.Windows.Forms.Label();
             this.eventoDescrizione_tb = new System.Windows.Forms.TextBox();
             this.nuovoEvento_btn = new System.Windows.Forms.Button();
+            this.nuovoGruppo_btn = new System.Windows.Forms.Button();
+            this.descrizioneGruppo_tb = new System.Windows.Forms.TextBox();
+            this.descrizioneGruppo_lbl = new System.Windows.Forms.Label();
+            this.searchGroup_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).BeginInit();
             this.SuspendLayout();
@@ -218,7 +222,7 @@
             // 
             // searchEvents_btn
             // 
-            this.searchEvents_btn.Location = new System.Drawing.Point(909, 176);
+            this.searchEvents_btn.Location = new System.Drawing.Point(902, 51);
             this.searchEvents_btn.Name = "searchEvents_btn";
             this.searchEvents_btn.Size = new System.Drawing.Size(180, 29);
             this.searchEvents_btn.TabIndex = 20;
@@ -244,18 +248,57 @@
             // 
             // nuovoEvento_btn
             // 
-            this.nuovoEvento_btn.Location = new System.Drawing.Point(1110, 176);
+            this.nuovoEvento_btn.Location = new System.Drawing.Point(1099, 51);
             this.nuovoEvento_btn.Name = "nuovoEvento_btn";
-            this.nuovoEvento_btn.Size = new System.Drawing.Size(94, 29);
+            this.nuovoEvento_btn.Size = new System.Drawing.Size(115, 29);
             this.nuovoEvento_btn.TabIndex = 23;
             this.nuovoEvento_btn.Text = "Nuovo Evento";
             this.nuovoEvento_btn.UseVisualStyleBackColor = true;
+            // 
+            // nuovoGruppo_btn
+            // 
+            this.nuovoGruppo_btn.Location = new System.Drawing.Point(1099, 176);
+            this.nuovoGruppo_btn.Name = "nuovoGruppo_btn";
+            this.nuovoGruppo_btn.Size = new System.Drawing.Size(115, 29);
+            this.nuovoGruppo_btn.TabIndex = 27;
+            this.nuovoGruppo_btn.Text = "Nuovo Gruppo";
+            this.nuovoGruppo_btn.UseVisualStyleBackColor = true;
+            // 
+            // descrizioneGruppo_tb
+            // 
+            this.descrizioneGruppo_tb.Location = new System.Drawing.Point(990, 143);
+            this.descrizioneGruppo_tb.Name = "descrizioneGruppo_tb";
+            this.descrizioneGruppo_tb.Size = new System.Drawing.Size(224, 27);
+            this.descrizioneGruppo_tb.TabIndex = 26;
+            // 
+            // descrizioneGruppo_lbl
+            // 
+            this.descrizioneGruppo_lbl.AutoSize = true;
+            this.descrizioneGruppo_lbl.Location = new System.Drawing.Point(888, 146);
+            this.descrizioneGruppo_lbl.Name = "descrizioneGruppo_lbl";
+            this.descrizioneGruppo_lbl.Size = new System.Drawing.Size(50, 20);
+            this.descrizioneGruppo_lbl.TabIndex = 25;
+            this.descrizioneGruppo_lbl.Text = "Nome";
+            // 
+            // searchGroup_btn
+            // 
+            this.searchGroup_btn.Location = new System.Drawing.Point(902, 176);
+            this.searchGroup_btn.Name = "searchGroup_btn";
+            this.searchGroup_btn.Size = new System.Drawing.Size(180, 29);
+            this.searchGroup_btn.TabIndex = 24;
+            this.searchGroup_btn.Text = "Cerca Gruppi";
+            this.searchGroup_btn.UseVisualStyleBackColor = true;
+            this.searchGroup_btn.Click += new System.EventHandler(this.searchGroup_btn_Click);
             // 
             // MainPageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1531, 859);
+            this.Controls.Add(this.nuovoGruppo_btn);
+            this.Controls.Add(this.descrizioneGruppo_tb);
+            this.Controls.Add(this.descrizioneGruppo_lbl);
+            this.Controls.Add(this.searchGroup_btn);
             this.Controls.Add(this.nuovoEvento_btn);
             this.Controls.Add(this.eventoDescrizione_tb);
             this.Controls.Add(this.eventoDescrizione_lbl);
@@ -312,5 +355,9 @@
         private Label eventoDescrizione_lbl;
         private TextBox eventoDescrizione_tb;
         private Button nuovoEvento_btn;
+        private Button nuovoGruppo_btn;
+        private TextBox descrizioneGruppo_tb;
+        private Label descrizioneGruppo_lbl;
+        private Button searchGroup_btn;
     }
 }

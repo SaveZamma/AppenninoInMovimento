@@ -8,6 +8,12 @@ namespace AppenninoInMovimento
 {
     public static class ParametriSessione
     {
+        private static string _usernameSuperUser = "";
+        public static string UsernameSuperUser
+        {
+            get { return _usernameSuperUser; }
+            set { _usernameSuperUser = value; }
+        }
 
         private static string _username = "";
         public static string Username
@@ -76,6 +82,19 @@ namespace AppenninoInMovimento
         {
             get { return _tipoOperazioneDB; }
             set { _tipoOperazioneDB = value; }
+        }
+
+        public static void ResetParams()
+        {
+            ID_ATTIVITA = 0;
+            ID_EVENTO = 0;
+            ID_GRUPPO = 0;
+            ID_INTARTTENIMENTO = 0;
+            ID_TAPPA = 0;
+            Username = "";
+            Lat = 0;
+            Lng = 0;
+            TipoOperazioneDB = enum_TipoOperazioneDB.READ;
         }
     }
 

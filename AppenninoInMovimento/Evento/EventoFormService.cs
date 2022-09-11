@@ -40,5 +40,16 @@ namespace AppenninoInMovimento.Evento
 
             new Utils.DBUtils().EseguiQuery(sql_string.Sql);
         }
+
+        public System.Data.DataTable LeggiEventi(string parametriRicerca)
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            sql_string.addNewLine("SELECT * FROM Eventi");
+            sql_string.addNewLine(parametriRicerca);
+
+            return dbu.queryLetturaDT(sql_string.Sql);
+        }
     }
 }

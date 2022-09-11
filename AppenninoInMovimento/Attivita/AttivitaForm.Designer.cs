@@ -62,6 +62,7 @@
             this.riposo_tb = new System.Windows.Forms.TextBox();
             this.percorso_lv = new System.Windows.Forms.ListView();
             this.pesoZaino_num = new System.Windows.Forms.NumericUpDown();
+            this.modificaLuogo_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.durata_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).BeginInit();
@@ -181,7 +182,7 @@
             this.pesoZaino_lbl.AutoSize = true;
             this.pesoZaino_lbl.Location = new System.Drawing.Point(34, 380);
             this.pesoZaino_lbl.Name = "pesoZaino_lbl";
-            this.pesoZaino_lbl.Size = new System.Drawing.Size(81, 20);
+            this.pesoZaino_lbl.Size = new System.Drawing.Size(104, 20);
             this.pesoZaino_lbl.TabIndex = 12;
             this.pesoZaino_lbl.Text = "Peso Zaino [g]";
             // 
@@ -255,6 +256,7 @@
             this.exit_btn.TabIndex = 30;
             this.exit_btn.Text = "Esci";
             this.exit_btn.UseVisualStyleBackColor = true;
+            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
             // 
             // save_btn
             // 
@@ -269,7 +271,7 @@
             // percorso_lbl
             // 
             this.percorso_lbl.AutoSize = true;
-            this.percorso_lbl.Location = new System.Drawing.Point(34, 577);
+            this.percorso_lbl.Location = new System.Drawing.Point(34, 602);
             this.percorso_lbl.Name = "percorso_lbl";
             this.percorso_lbl.Size = new System.Drawing.Size(65, 20);
             this.percorso_lbl.TabIndex = 32;
@@ -277,9 +279,10 @@
             // 
             // luogo_tb
             // 
-            this.luogo_tb.Location = new System.Drawing.Point(126, 535);
+            this.luogo_tb.Enabled = false;
+            this.luogo_tb.Location = new System.Drawing.Point(91, 535);
             this.luogo_tb.Name = "luogo_tb";
-            this.luogo_tb.Size = new System.Drawing.Size(340, 27);
+            this.luogo_tb.Size = new System.Drawing.Size(429, 27);
             this.luogo_tb.TabIndex = 35;
             // 
             // luogo_lbl
@@ -293,7 +296,7 @@
             // 
             // modificaPercorso_btn
             // 
-            this.modificaPercorso_btn.Location = new System.Drawing.Point(526, 565);
+            this.modificaPercorso_btn.Location = new System.Drawing.Point(526, 590);
             this.modificaPercorso_btn.Name = "modificaPercorso_btn";
             this.modificaPercorso_btn.Size = new System.Drawing.Size(94, 29);
             this.modificaPercorso_btn.TabIndex = 36;
@@ -309,6 +312,7 @@
             this.join_btn.TabIndex = 37;
             this.join_btn.Text = "Iscriviti";
             this.join_btn.UseVisualStyleBackColor = true;
+            this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
             // 
             // pasti_tb
             // 
@@ -340,7 +344,7 @@
             // 
             // percorso_lv
             // 
-            this.percorso_lv.Location = new System.Drawing.Point(34, 600);
+            this.percorso_lv.Location = new System.Drawing.Point(34, 625);
             this.percorso_lv.Name = "percorso_lv";
             this.percorso_lv.Size = new System.Drawing.Size(586, 121);
             this.percorso_lv.TabIndex = 33;
@@ -348,18 +352,27 @@
             // 
             // pesoZaino_num
             // 
-            this.pesoZaino_num.DecimalPlaces = 2;
-            this.pesoZaino_num.Location = new System.Drawing.Point(126, 378);
+            this.pesoZaino_num.Location = new System.Drawing.Point(144, 378);
             this.pesoZaino_num.Name = "pesoZaino_num";
             this.pesoZaino_num.Size = new System.Drawing.Size(150, 27);
             this.pesoZaino_num.TabIndex = 42;
-            this.pesoZaino_num.DecimalPlaces = 0;
+            // 
+            // modificaLuogo_btn
+            // 
+            this.modificaLuogo_btn.Location = new System.Drawing.Point(526, 534);
+            this.modificaLuogo_btn.Name = "modificaLuogo_btn";
+            this.modificaLuogo_btn.Size = new System.Drawing.Size(94, 29);
+            this.modificaLuogo_btn.TabIndex = 43;
+            this.modificaLuogo_btn.Text = "Modifica";
+            this.modificaLuogo_btn.UseVisualStyleBackColor = true;
+            this.modificaLuogo_btn.Click += new System.EventHandler(this.modificaLuogo_btn_Click);
             // 
             // AttivitaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 796);
+            this.Controls.Add(this.modificaLuogo_btn);
             this.Controls.Add(this.pesoZaino_num);
             this.Controls.Add(this.riposo_tb);
             this.Controls.Add(this.movimento_tb);
@@ -396,6 +409,7 @@
             this.Controls.Add(this.descrizione_lbl);
             this.Name = "AttivitaForm";
             this.Text = "AttivitaForm";
+            this.Load += new System.EventHandler(this.AttivitaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.durata_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).EndInit();
@@ -428,10 +442,6 @@
         private TextBox periodoConsigliato_txtbox;
         private NumericUpDown numPartecipanti_num;
         private TextBox zaino_txtbox;
-        private Button modificaPasti_btn;
-        private Button modificaVestiario_btn;
-        private Button modificaAttrezzaturaMovimento_btn;
-        private Button mdificaAttrezzaturaRiposo_btn;
         private Button exit_btn;
         private Button save_btn;
         private Label percorso_lbl;
@@ -445,5 +455,6 @@
         private TextBox riposo_tb;
         private ListView percorso_lv;
         private NumericUpDown pesoZaino_num;
+        private Button modificaLuogo_btn;
     }
 }

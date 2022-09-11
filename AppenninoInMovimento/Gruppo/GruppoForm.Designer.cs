@@ -77,6 +77,7 @@
             this.save_btn.TabIndex = 4;
             this.save_btn.Text = "Salva";
             this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
             // join_btn
             // 
@@ -86,6 +87,7 @@
             this.join_btn.TabIndex = 5;
             this.join_btn.Text = "Unisciti";
             this.join_btn.UseVisualStyleBackColor = true;
+            this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
             // 
             // GruppoForm
             // 
@@ -100,6 +102,7 @@
             this.Controls.Add(this.nome_lbl);
             this.Name = "GruppoForm";
             this.Text = "GruppoForm";
+            this.Load += new System.EventHandler(this.GruppoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

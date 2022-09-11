@@ -46,20 +46,20 @@ namespace AppenninoInMovimento.Attivita
 
             sql_string.addNewLine("UPDATE Attivita");
             sql_string.addNewLine("SET");
-            sql_string.addNewLine("    descrizione = '" + newactivity.Descrizione + "'");
-            sql_string.addNewLine("    AND dataInizio = '" + newactivity.DataInizio + "'");
-            sql_string.addNewLine("    AND datafine = '" + newactivity.DataFine + "'");
-            sql_string.addNewLine("    AND durata = " + newactivity.Durata + "");
-            sql_string.addNewLine("    AND difficolta = " + newactivity.Difficolata + "");
-            sql_string.addNewLine("    AND periodoConsigliato = '" + newactivity.PeriodoConsigliato + "'");
-            sql_string.addNewLine("    AND partecipanti = " + newactivity.NumeroPartecipanti + "");
-            sql_string.addNewLine("    AND vestiario = '" + newactivity.Vestiario + "'");
-            sql_string.addNewLine("    AND attrezzaturaMovimento = '" + newactivity.AttrezziMovimento + "'");
-            sql_string.addNewLine("    AND attrezzaturaRiposo = '" + newactivity.AttrezziRiposo + "'");
-            sql_string.addNewLine("    AND pasti = '" + newactivity.Pasti + "'");
-            sql_string.addNewLine("    AND pesoZaino = " + newactivity.PesoTotale + "");
-            sql_string.addNewLine("    AND zaino = '" + newactivity.TipologiaZaino + "'");
-            sql_string.addNewLine("    AND ID_LUOGO = " + newactivity.ID_LUOGO + "");
+            sql_string.addNewLine("    descrizione = '" + newactivity.Descrizione + "',");
+            sql_string.addNewLine("    dataInizio = '" + newactivity.DataInizio + "',");
+            sql_string.addNewLine("    datafine = '" + newactivity.DataFine + "',");
+            sql_string.addNewLine("    durata = " + newactivity.Durata + ",");
+            sql_string.addNewLine("    difficolta = " + newactivity.Difficolata + ",");
+            sql_string.addNewLine("    periodoConsigliato = '" + newactivity.PeriodoConsigliato + "',");
+            sql_string.addNewLine("    partecipanti = " + newactivity.NumeroPartecipanti + ",");
+            sql_string.addNewLine("    vestiario = '" + newactivity.Vestiario + "',");
+            sql_string.addNewLine("    attrezzaturaMovimento = '" + newactivity.AttrezziMovimento + "',");
+            sql_string.addNewLine("    attrezzaturaRiposo = '" + newactivity.AttrezziRiposo + "',");
+            sql_string.addNewLine("    pasti = '" + newactivity.Pasti + "',");
+            sql_string.addNewLine("    pesoZaino = " + newactivity.PesoTotale + ",");
+            sql_string.addNewLine("    zaino = '" + newactivity.TipologiaZaino + "',");
+            sql_string.addNewLine("    ID_LUOGO = " + newactivity.ID_LUOGO + "");
 
             sql_string.addNewLine("WHERE ID = " + ID);
 
@@ -96,15 +96,30 @@ namespace AppenninoInMovimento.Attivita
         internal void EliminaAttivita()
         {
             var DR_attivita = this.LeggiSingleAttivita();
+            ParametriSessione.ID_EVENTO = Int32.Parse(DR_attivita["ID_EVENTO"].ToString());
 
             var sql_string = new Utils.SQLString();
-            if (DR_attivita["ID_EVENTO"] != null)
+            if (ParametriSessione.ID_EVENTO != 0)
             {
-                ParametriSessione.ID_EVENTO = Int32.Parse(DR_attivita["ID_EVENTO"].ToString());
                 new Evento.EventoFormService().EliminaEvento();
             }
             sql_string.addNewLine("DELETE FROM Attivita");
             sql_string.addNewLine("WHERE ID = " + ParametriSessione.ID_ATTIVITA);
+
+            sql_string.addNewLine("DELETE FROM Iscrizioni");
+            sql_string.addNewLine("WHERE ID_ATTIVITA = " + ParametriSessione.ID_ATTIVITA);
+
+            new Utils.DBUtils().EseguiQuery(sql_string.Sql);
+        }
+
+        internal void JoinAttivita()
+        {
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("INSERT INTO Iscrizioni");
+            sql_string.addNewLine("VALUES (");
+            sql_string.addNewLine("    '" + ParametriSessione.UsernameSuperUser + "',");
+            sql_string.addNewLine("    " + ParametriSessione.ID_ATTIVITA + "");
+            sql_string.addNewLine(")");
 
             new Utils.DBUtils().EseguiQuery(sql_string.Sql);
         }

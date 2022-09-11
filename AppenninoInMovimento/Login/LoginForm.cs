@@ -37,7 +37,7 @@ namespace AppenninoInMovimento
 
         private void username_txtBox_TextChanged(object sender, EventArgs e)
         {
-            AppenninoInMovimento.ParametriSessione.Username = username_txtBox.Text;
+            AppenninoInMovimento.ParametriSessione.UsernameSuperUser = username_txtBox.Text;
         }
 
         private void pw_txtBox_TextChanged(object sender, EventArgs e)
