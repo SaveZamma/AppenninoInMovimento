@@ -20,18 +20,19 @@ namespace AppenninoInMovimento
 
                 if (dt.Rows.Count > 0)
                 {
-
+                    var res = new MainPage.MainPageForm().ShowDialog();
                 }
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show("Errore: " + ex.Message);
             }            
         }
 
         private void register_btn_Click(object sender, EventArgs e)
         {
-            var res = new RegisterForm().ShowDialog();
+            ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.WRITE;
+            var res = new UtenteForm().ShowDialog();
         }
 
         private void username_txtBox_TextChanged(object sender, EventArgs e)

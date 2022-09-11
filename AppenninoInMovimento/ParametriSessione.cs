@@ -23,11 +23,67 @@ namespace AppenninoInMovimento
             set { _password = value; }
         }
 
-        private static string _CF = "";
-        public static string CF
+        private static int _ID_ATTIVITA = 0;
+        public static int ID_ATTIVITA
         {
-            get { return _CF; }
-            set { _CF = value; }
+            get { return _ID_ATTIVITA; }
+            set { _ID_ATTIVITA = value; }
         }
+
+        private static int _ID_EVENTO = 0;
+        public static int ID_EVENTO
+        {
+            get { return _ID_EVENTO; }
+            set { _ID_EVENTO = value; }
+        }
+
+        private static float _lat = 0;
+        public static float Lat
+        {
+            get { return _lat; }
+            set { _lat = value; }
+        }
+        private static float _lng = 0;
+        public static float Lng
+        {
+            get { return _lng; }
+            set { _lng = value; }
+        }
+
+        private static int _ID_INTRATTENIMENTO = 0;
+        public static int ID_INTARTTENIMENTO
+        {
+            get { return _ID_INTRATTENIMENTO; }
+            set { _ID_INTRATTENIMENTO = value; }
+        }
+
+        private static int _ID_GRUPPO = 0;
+        public static int ID_GRUPPO
+        {
+            get { return _ID_GRUPPO; }
+            set { _ID_GRUPPO = value; }
+        }
+
+        private static int _ID_TAPPA = 0;
+        public static int ID_TAPPA
+        {
+            get { return _ID_TAPPA; }
+            set { _ID_TAPPA = value; }
+        }
+
+        private static enum_TipoOperazioneDB _tipoOperazioneDB = enum_TipoOperazioneDB.READ;
+        public static enum_TipoOperazioneDB TipoOperazioneDB
+        {
+            get { return _tipoOperazioneDB; }
+            set { _tipoOperazioneDB = value; }
+        }
+    }
+
+    public enum enum_TipoOperazioneDB
+    {
+        READ = 0,
+        WRITE = 1,        
+        UPDATE = 2,
+        DELETE = 3
     }
 }

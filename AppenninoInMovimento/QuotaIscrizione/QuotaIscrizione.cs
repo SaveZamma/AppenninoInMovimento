@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppenninoInMovimento
+namespace AppenninoInMovimento.QuotaIscrizione
 {
-    public partial class RegisterForm : Form
+    public partial class QuotaIscrizione : Form
     {
-        public RegisterForm()
+        public QuotaIscrizione()
         {
             InitializeComponent();
         }

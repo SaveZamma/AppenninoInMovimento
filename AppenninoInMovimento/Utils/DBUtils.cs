@@ -56,21 +56,21 @@ namespace AppenninoInMovimento.Utils
                         connection.Close();
                         if (rowsAdded > 0)
                         {
-                            MessageBox.Show("Row inserted!!");
+                            MessageBox.Show("Scrittura avvenuta con successo.");
                             return true;
                         }                            
                         else
                         {
                             // Well this should never really happen
-                            MessageBox.Show("No row inserted");
+                            MessageBox.Show("Errore durante la scrittura: " + sql_string);
                             return false;
                         }
                     }                    
                 }
             }
-            catch (SqlException e)
+            catch (SqlException ex)
             {
-                throw e;
+                MessageBox.Show("Errore durante la scrittura: " + ex.Message);
                 return false;
             }
         }

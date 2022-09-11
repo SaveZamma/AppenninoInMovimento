@@ -11,7 +11,7 @@ namespace AppenninoInMovimento.LoginFormService
         public System.Data.DataTable checkUserInDB(string username, string password)
         {
             Utils.SQLString sql_string = new Utils.SQLString();
-            sql_string.addNewLine("SELECT * FROM CredenzialiAccesso");
+            sql_string.addNewLine("SELECT * FROM Utenti");
             sql_string.addNewLine("WHERE username = '" + username + "'");
             sql_string.addNewLine("AND password = '" + password + "'");
 

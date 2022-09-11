@@ -8,18 +8,13 @@ namespace AppenninoInMovimento.Utils.Entita
 {
     internal class Luogo
     {
-        private float _lat = 0;
-        public float lat
+        private LatLng _latlng = new LatLng();
+        public LatLng LatLng
         {
-            get { return _lat; }
-            set { _lat = value; }
+            get { return _latlng; }
+            set { _latlng = value; }
         }
-        private float _lng = 0;
-        public float Lng
-        {
-            get { return _lng; }
-            set { _lng = value; }
-        }
+        
         private string _comune = "";
         public string Comune
         {
@@ -43,6 +38,22 @@ namespace AppenninoInMovimento.Utils.Entita
         {
             get { return _via; }
             set { _via = value; }
+        }
+    }
+
+    internal class LatLng 
+    {
+        private float _lat = 0;
+        public float Lat
+        {
+            get { return _lat; }
+            set { _lat = value; }
+        }
+        private float _lng = 0;
+        public float Lng
+        {
+            get { return _lng; }
+            set { _lng = value; }
         }
     }
 }
