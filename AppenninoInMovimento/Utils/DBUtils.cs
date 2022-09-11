@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace AppenninoInMovimento.Utils
 {
     
-    internal class DBUtils
+    public class DBUtils
     {
-        
         public System.Data.DataTable queryLetturaDT(String sql_string)
         {
             var dt = new System.Data.DataTable();
@@ -41,7 +40,7 @@ namespace AppenninoInMovimento.Utils
             return dt;
         }
 
-        public bool queryScrittura(String sql_string)
+        public bool EseguiQuery(String sql_string)
         {
             try
             {
@@ -52,17 +51,17 @@ namespace AppenninoInMovimento.Utils
                     using (SqlCommand command = new SqlCommand(sql_string, connection))
                     {
                         // Let's ask the db to execute the query
-                        int rowsAdded = command.ExecuteNonQuery();
+                        int rowsAffected = command.ExecuteNonQuery();
                         connection.Close();
-                        if (rowsAdded > 0)
+                        if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Scrittura avvenuta con successo.");
+                            MessageBox.Show("Query eseguita con successo.");
                             return true;
                         }                            
                         else
                         {
                             // Well this should never really happen
-                            MessageBox.Show("Errore durante la scrittura: " + sql_string);
+                            MessageBox.Show("Errore durante l'esecuzione della query: " + sql_string);
                             return false;
                         }
                     }                    
@@ -78,24 +77,23 @@ namespace AppenninoInMovimento.Utils
         public int NewIntID(string tableName, string IDColName)
         {
             var sql_string = new Utils.SQLString();
-            var dbu = new Utils.DBUtils();
 
             int newId = 1;
 
-            sql_string.addNewLine("SELECT ID FROM " + tableName + "");
+            sql_string.addNewLine("SELECT TOP 1 " + IDColName + " FROM " + tableName + "");
             sql_string.addNewLine("ORDER BY " + IDColName + " DESC");
 
-            var dt = dbu.queryLetturaDT(sql_string.Sql);
+            var dt = this.queryLetturaDT(sql_string.Sql);
 
             foreach (System.Data.DataRow r in dt.Rows)
             {
-                newId += dbu.GetInt(r, "ID");
+                newId += this.GetRowInt(r, "ID");
             }
 
             return newId;
         }
 
-        private int GetInt(this System.Data.DataRow row, string fieldName)
+        private int GetRowInt(System.Data.DataRow row, string fieldName)
         {
             return Convert.ToInt32(row[fieldName]);
         }
@@ -118,7 +116,7 @@ namespace AppenninoInMovimento.Utils
         }
     }
 
-    internal class SQLString
+    public class SQLString
     {
         private string _sql = "";
         public string Sql

@@ -32,8 +32,8 @@ namespace AppenninoInMovimento.Utils.Entita
             get { return _dataFine; }
             set { _dataFine = value; }
         }
-        private TimeSpan _durata = TimeSpan.Zero;
-        public TimeSpan Durata
+        private decimal _durata = 0;
+        public decimal Durata
         {
             get { return _durata; }
             set { _durata = value; }
@@ -44,8 +44,8 @@ namespace AppenninoInMovimento.Utils.Entita
             get { return _difficolta; }
             set { _difficolta = value; }
         }
-        private TimeSpan _periodoConsigliato = TimeSpan.Zero;
-        public TimeSpan PeriodoConsigliato
+        private string _periodoConsigliato = "";
+        public string PeriodoConsigliato
         {
             get { return _periodoConsigliato; }
             set { _periodoConsigliato = value; }
@@ -80,8 +80,8 @@ namespace AppenninoInMovimento.Utils.Entita
             get { return _pasti; }
             set { _pasti = value; }
         }
-        private float _pesoTotale = 0;
-        public float PesoTotale
+        private decimal _pesoTotale = 0;
+        public decimal PesoTotale
         {
             get { return _pesoTotale; }
             set { _pesoTotale = value; }

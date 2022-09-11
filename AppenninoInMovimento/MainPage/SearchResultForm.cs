@@ -13,14 +13,25 @@ namespace AppenninoInMovimento.MainPage
     public partial class SearchResultForm : Form
     {
         public MainPageForm.enum_TipoRicerca tipoRicerca = MainPageForm.enum_TipoRicerca.ATTIVITA;
-        public SearchResultForm()
+        private string parametriLettura = "";
+        public SearchResultForm(string parametriLettura)
         {
+            this.parametriLettura = parametriLettura;
             InitializeComponent();
         }
 
         private void remove_btn_Click(object sender, EventArgs e)
         {
             ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.DELETE;
+            string s = "";
+            if(this.result_lb.SelectedItem != null)
+            {
+                s = this.result_lb.SelectedItem.ToString();
+                var ID = s.Split(":")[1];
+                new SearchResultFormService().RemoveSelectedItem(ID, this.tipoRicerca);
+            }
+
+            this.Close();
         }
 
         private void update_btn_Click(object sender, EventArgs e)
@@ -66,6 +77,23 @@ namespace AppenninoInMovimento.MainPage
             {
                 throw ex;
             }            
+        }
+
+        private void SearchResultForm_Load(object sender, EventArgs e)
+        {
+            var results = new SearchResultFormService().LeggiDatiDT(this.parametriLettura);
+
+            foreach(DataRow r in results.Rows)
+            {
+                if(this.tipoRicerca == MainPageForm.enum_TipoRicerca.ATTIVITA)
+                    this.result_lb.Items.Add(r["descrizione"] + " " + r["valutazione"].ToString() + " ID: " + r["ID"].ToString());
+                if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.UTENTE)
+                    this.result_lb.Items.Add(r["nome"] + " " + r["cognome"] + " username: " + r["username"]);
+                if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.GRUPPO)
+                    this.result_lb.Items.Add(r["nome"] + " ID: " + r["ID"].ToString());
+                if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.EVENTO)
+                    this.result_lb.Items.Add(r["descrizione"] + " ID: " + r["ID"].ToString());
+            }
         }
     }
 }

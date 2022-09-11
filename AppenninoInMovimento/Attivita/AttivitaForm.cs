@@ -74,5 +74,26 @@ namespace AppenninoInMovimento.Attivita
             nf.tipoNecessario = enum_TipologiaNecessario.RIPOSO;
             var res = nf.ShowDialog();
         }
+
+        private void save_btn_Click(object sender, EventArgs e)
+        {
+            Utils.Entita.Attivita attivita = new Utils.Entita.Attivita();
+
+            attivita.Pasti = this.pasti_tb.Text;
+            attivita.Durata = this.durata_num.Value;
+            attivita.Difficolata = Decimal.ToInt32(this.difficolta_num.Value);
+            attivita.DataInizio = this.dataInizio_datepk.Value;
+            attivita.DataFine = this.dataFine_datepk.Value;
+            attivita.AttrezziMovimento = this.movimento_tb.Text;
+            attivita.AttrezziRiposo = this.riposo_tb.Text;
+            attivita.Descrizione = this.descrizione_txtbox.Text;
+            attivita.NumeroPartecipanti = Decimal.ToInt32(this.numPartecipanti_num.Value);
+            attivita.PeriodoConsigliato = this.periodoConsigliato_txtbox.Text;
+            attivita.PesoTotale = this.pesoZaino_num.Value;
+            attivita.TipologiaZaino = this.zaino_txtbox.Text;
+            attivita.Vestiario = this.vestiario_tb.Text;
+
+            new AttivitaFormService().ScriviAttivita(attivita);
+        }
     }
 }

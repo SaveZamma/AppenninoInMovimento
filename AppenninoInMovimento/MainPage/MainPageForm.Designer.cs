@@ -235,14 +235,14 @@
             this.eventoDescrizione_lbl.TabIndex = 21;
             this.eventoDescrizione_lbl.Text = "Descrizione";
             // 
-            // textBox1
+            // eventoDescrizione_tb
             // 
             this.eventoDescrizione_tb.Location = new System.Drawing.Point(990, 18);
             this.eventoDescrizione_tb.Name = "eventoDescrizione_tb";
             this.eventoDescrizione_tb.Size = new System.Drawing.Size(224, 27);
             this.eventoDescrizione_tb.TabIndex = 22;
             // 
-            // button1
+            // nuovoEvento_btn
             // 
             this.nuovoEvento_btn.Location = new System.Drawing.Point(1110, 176);
             this.nuovoEvento_btn.Name = "nuovoEvento_btn";
@@ -280,6 +280,7 @@
             this.Controls.Add(this.modificaDatiUtente_btn);
             this.Name = "MainPageForm";
             this.Text = "Appennino in Movimento - ";
+            this.Load += new System.EventHandler(this.MainPageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).EndInit();
             this.ResumeLayout(false);

@@ -48,27 +48,24 @@
             this.difficolta_num = new System.Windows.Forms.NumericUpDown();
             this.periodoConsigliato_txtbox = new System.Windows.Forms.TextBox();
             this.numPartecipanti_num = new System.Windows.Forms.NumericUpDown();
-            this.vestiario_lv = new System.Windows.Forms.ListView();
-            this.riposo_lv = new System.Windows.Forms.ListView();
             this.zaino_txtbox = new System.Windows.Forms.TextBox();
-            this.pesoZaino_txtbox = new System.Windows.Forms.TextBox();
-            this.pasti_lv = new System.Windows.Forms.ListView();
-            this.attrezzatura_lv = new System.Windows.Forms.ListView();
-            this.modificaPasti_btn = new System.Windows.Forms.Button();
-            this.modificaVestiario_btn = new System.Windows.Forms.Button();
-            this.modificaAttrezzaturaMovimento_btn = new System.Windows.Forms.Button();
-            this.mdificaAttrezzaturaRiposo_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
-            this.percorso_lv = new System.Windows.Forms.ListView();
             this.percorso_lbl = new System.Windows.Forms.Label();
             this.luogo_tb = new System.Windows.Forms.TextBox();
             this.luogo_lbl = new System.Windows.Forms.Label();
             this.modificaPercorso_btn = new System.Windows.Forms.Button();
             this.join_btn = new System.Windows.Forms.Button();
+            this.pasti_tb = new System.Windows.Forms.TextBox();
+            this.vestiario_tb = new System.Windows.Forms.TextBox();
+            this.movimento_tb = new System.Windows.Forms.TextBox();
+            this.riposo_tb = new System.Windows.Forms.TextBox();
+            this.percorso_lv = new System.Windows.Forms.ListView();
+            this.pesoZaino_num = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.durata_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pesoZaino_num)).BeginInit();
             this.SuspendLayout();
             // 
             // descrizione_lbl
@@ -103,7 +100,7 @@
             this.durata_lbl.AutoSize = true;
             this.durata_lbl.Location = new System.Drawing.Point(34, 155);
             this.durata_lbl.Name = "durata_lbl";
-            this.durata_lbl.Size = new System.Drawing.Size(54, 20);
+            this.durata_lbl.Size = new System.Drawing.Size(76, 20);
             this.durata_lbl.TabIndex = 3;
             this.durata_lbl.Text = "Durata [h]";
             // 
@@ -186,7 +183,7 @@
             this.pesoZaino_lbl.Name = "pesoZaino_lbl";
             this.pesoZaino_lbl.Size = new System.Drawing.Size(81, 20);
             this.pesoZaino_lbl.TabIndex = 12;
-            this.pesoZaino_lbl.Text = "Peso Zaino";
+            this.pesoZaino_lbl.Text = "Peso Zaino [g]";
             // 
             // descrizione_txtbox
             // 
@@ -211,6 +208,7 @@
             // 
             // durata_num
             // 
+            this.durata_num.DecimalPlaces = 2;
             this.durata_num.Location = new System.Drawing.Point(126, 153);
             this.durata_num.Name = "durata_num";
             this.durata_num.Size = new System.Drawing.Size(150, 27);
@@ -242,91 +240,12 @@
             this.numPartecipanti_num.Size = new System.Drawing.Size(192, 27);
             this.numPartecipanti_num.TabIndex = 19;
             // 
-            // vestiario_lv
-            // 
-            this.vestiario_lv.Location = new System.Drawing.Point(550, 48);
-            this.vestiario_lv.Name = "vestiario_lv";
-            this.vestiario_lv.Size = new System.Drawing.Size(586, 121);
-            this.vestiario_lv.TabIndex = 21;
-            this.vestiario_lv.UseCompatibleStateImageBehavior = false;
-            // 
-            // riposo_lv
-            // 
-            this.riposo_lv.Location = new System.Drawing.Point(550, 392);
-            this.riposo_lv.Name = "riposo_lv";
-            this.riposo_lv.Size = new System.Drawing.Size(586, 121);
-            this.riposo_lv.TabIndex = 22;
-            this.riposo_lv.UseCompatibleStateImageBehavior = false;
-            // 
             // zaino_txtbox
             // 
             this.zaino_txtbox.Location = new System.Drawing.Point(126, 331);
             this.zaino_txtbox.Name = "zaino_txtbox";
             this.zaino_txtbox.Size = new System.Drawing.Size(340, 27);
             this.zaino_txtbox.TabIndex = 23;
-            // 
-            // pesoZaino_txtbox
-            // 
-            this.pesoZaino_txtbox.Location = new System.Drawing.Point(126, 377);
-            this.pesoZaino_txtbox.Name = "pesoZaino_txtbox";
-            this.pesoZaino_txtbox.Size = new System.Drawing.Size(340, 27);
-            this.pesoZaino_txtbox.TabIndex = 24;
-            // 
-            // pasti_lv
-            // 
-            this.pasti_lv.Location = new System.Drawing.Point(34, 448);
-            this.pasti_lv.Name = "pasti_lv";
-            this.pasti_lv.Size = new System.Drawing.Size(432, 65);
-            this.pasti_lv.TabIndex = 25;
-            this.pasti_lv.UseCompatibleStateImageBehavior = false;
-            // 
-            // attrezzatura_lv
-            // 
-            this.attrezzatura_lv.Location = new System.Drawing.Point(550, 221);
-            this.attrezzatura_lv.Name = "attrezzatura_lv";
-            this.attrezzatura_lv.Size = new System.Drawing.Size(586, 121);
-            this.attrezzatura_lv.TabIndex = 20;
-            this.attrezzatura_lv.UseCompatibleStateImageBehavior = false;
-            // 
-            // modificaPasti_btn
-            // 
-            this.modificaPasti_btn.Location = new System.Drawing.Point(372, 416);
-            this.modificaPasti_btn.Name = "modificaPasti_btn";
-            this.modificaPasti_btn.Size = new System.Drawing.Size(94, 29);
-            this.modificaPasti_btn.TabIndex = 26;
-            this.modificaPasti_btn.Text = "Modifica";
-            this.modificaPasti_btn.UseVisualStyleBackColor = true;
-            this.modificaPasti_btn.Click += new System.EventHandler(this.modificaPasti_btn_Click);
-            // 
-            // modificaVestiario_btn
-            // 
-            this.modificaVestiario_btn.Location = new System.Drawing.Point(1042, 16);
-            this.modificaVestiario_btn.Name = "modificaVestiario_btn";
-            this.modificaVestiario_btn.Size = new System.Drawing.Size(94, 29);
-            this.modificaVestiario_btn.TabIndex = 27;
-            this.modificaVestiario_btn.Text = "Modifica";
-            this.modificaVestiario_btn.UseVisualStyleBackColor = true;
-            this.modificaVestiario_btn.Click += new System.EventHandler(this.modificaVestiario_btn_Click);
-            // 
-            // modificaAttrezzaturaMovimento_btn
-            // 
-            this.modificaAttrezzaturaMovimento_btn.Location = new System.Drawing.Point(1042, 189);
-            this.modificaAttrezzaturaMovimento_btn.Name = "modificaAttrezzaturaMovimento_btn";
-            this.modificaAttrezzaturaMovimento_btn.Size = new System.Drawing.Size(94, 29);
-            this.modificaAttrezzaturaMovimento_btn.TabIndex = 28;
-            this.modificaAttrezzaturaMovimento_btn.Text = "Modifica";
-            this.modificaAttrezzaturaMovimento_btn.UseVisualStyleBackColor = true;
-            this.modificaAttrezzaturaMovimento_btn.Click += new System.EventHandler(this.modificaAttrezzaturaMovimento_btn_Click);
-            // 
-            // mdificaAttrezzaturaRiposo_btn
-            // 
-            this.mdificaAttrezzaturaRiposo_btn.Location = new System.Drawing.Point(1042, 360);
-            this.mdificaAttrezzaturaRiposo_btn.Name = "mdificaAttrezzaturaRiposo_btn";
-            this.mdificaAttrezzaturaRiposo_btn.Size = new System.Drawing.Size(94, 29);
-            this.mdificaAttrezzaturaRiposo_btn.TabIndex = 29;
-            this.mdificaAttrezzaturaRiposo_btn.Text = "Modifica";
-            this.mdificaAttrezzaturaRiposo_btn.UseVisualStyleBackColor = true;
-            this.mdificaAttrezzaturaRiposo_btn.Click += new System.EventHandler(this.mdificaAttrezzaturaRiposo_btn_Click);
             // 
             // exit_btn
             // 
@@ -345,14 +264,7 @@
             this.save_btn.TabIndex = 31;
             this.save_btn.Text = "Salva";
             this.save_btn.UseVisualStyleBackColor = true;
-            // 
-            // percorso_lv
-            // 
-            this.percorso_lv.Location = new System.Drawing.Point(34, 600);
-            this.percorso_lv.Name = "percorso_lv";
-            this.percorso_lv.Size = new System.Drawing.Size(586, 121);
-            this.percorso_lv.TabIndex = 33;
-            this.percorso_lv.UseCompatibleStateImageBehavior = false;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
             // percorso_lbl
             // 
@@ -389,7 +301,7 @@
             this.modificaPercorso_btn.UseVisualStyleBackColor = true;
             this.modificaPercorso_btn.Click += new System.EventHandler(this.modificaPercorso_btn_Click);
             // 
-            // button1
+            // join_btn
             // 
             this.join_btn.Location = new System.Drawing.Point(842, 692);
             this.join_btn.Name = "join_btn";
@@ -398,11 +310,61 @@
             this.join_btn.Text = "Iscriviti";
             this.join_btn.UseVisualStyleBackColor = true;
             // 
+            // pasti_tb
+            // 
+            this.pasti_tb.Location = new System.Drawing.Point(34, 448);
+            this.pasti_tb.Name = "pasti_tb";
+            this.pasti_tb.Size = new System.Drawing.Size(432, 27);
+            this.pasti_tb.TabIndex = 38;
+            // 
+            // vestiario_tb
+            // 
+            this.vestiario_tb.Location = new System.Drawing.Point(550, 48);
+            this.vestiario_tb.Name = "vestiario_tb";
+            this.vestiario_tb.Size = new System.Drawing.Size(586, 27);
+            this.vestiario_tb.TabIndex = 39;
+            // 
+            // movimento_tb
+            // 
+            this.movimento_tb.Location = new System.Drawing.Point(550, 221);
+            this.movimento_tb.Name = "movimento_tb";
+            this.movimento_tb.Size = new System.Drawing.Size(586, 27);
+            this.movimento_tb.TabIndex = 40;
+            // 
+            // riposo_tb
+            // 
+            this.riposo_tb.Location = new System.Drawing.Point(550, 392);
+            this.riposo_tb.Name = "riposo_tb";
+            this.riposo_tb.Size = new System.Drawing.Size(586, 27);
+            this.riposo_tb.TabIndex = 41;
+            // 
+            // percorso_lv
+            // 
+            this.percorso_lv.Location = new System.Drawing.Point(34, 600);
+            this.percorso_lv.Name = "percorso_lv";
+            this.percorso_lv.Size = new System.Drawing.Size(586, 121);
+            this.percorso_lv.TabIndex = 33;
+            this.percorso_lv.UseCompatibleStateImageBehavior = false;
+            // 
+            // pesoZaino_num
+            // 
+            this.pesoZaino_num.DecimalPlaces = 2;
+            this.pesoZaino_num.Location = new System.Drawing.Point(126, 378);
+            this.pesoZaino_num.Name = "pesoZaino_num";
+            this.pesoZaino_num.Size = new System.Drawing.Size(150, 27);
+            this.pesoZaino_num.TabIndex = 42;
+            this.pesoZaino_num.DecimalPlaces = 0;
+            // 
             // AttivitaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 796);
+            this.Controls.Add(this.pesoZaino_num);
+            this.Controls.Add(this.riposo_tb);
+            this.Controls.Add(this.movimento_tb);
+            this.Controls.Add(this.vestiario_tb);
+            this.Controls.Add(this.pasti_tb);
             this.Controls.Add(this.join_btn);
             this.Controls.Add(this.modificaPercorso_btn);
             this.Controls.Add(this.luogo_tb);
@@ -411,16 +373,7 @@
             this.Controls.Add(this.percorso_lbl);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.exit_btn);
-            this.Controls.Add(this.mdificaAttrezzaturaRiposo_btn);
-            this.Controls.Add(this.modificaAttrezzaturaMovimento_btn);
-            this.Controls.Add(this.modificaVestiario_btn);
-            this.Controls.Add(this.modificaPasti_btn);
-            this.Controls.Add(this.pasti_lv);
-            this.Controls.Add(this.pesoZaino_txtbox);
             this.Controls.Add(this.zaino_txtbox);
-            this.Controls.Add(this.riposo_lv);
-            this.Controls.Add(this.vestiario_lv);
-            this.Controls.Add(this.attrezzatura_lv);
             this.Controls.Add(this.numPartecipanti_num);
             this.Controls.Add(this.periodoConsigliato_txtbox);
             this.Controls.Add(this.difficolta_num);
@@ -446,6 +399,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.durata_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.difficolta_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pesoZaino_num)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,23 +427,23 @@
         private NumericUpDown difficolta_num;
         private TextBox periodoConsigliato_txtbox;
         private NumericUpDown numPartecipanti_num;
-        private ListView vestiario_lv;
-        private ListView riposo_lv;
         private TextBox zaino_txtbox;
-        private TextBox pesoZaino_txtbox;
-        private ListView pasti_lv;
-        private ListView attrezzatura_lv;
         private Button modificaPasti_btn;
         private Button modificaVestiario_btn;
         private Button modificaAttrezzaturaMovimento_btn;
         private Button mdificaAttrezzaturaRiposo_btn;
         private Button exit_btn;
         private Button save_btn;
-        private ListView percorso_lv;
         private Label percorso_lbl;
         private TextBox luogo_tb;
         private Label luogo_lbl;
         private Button modificaPercorso_btn;
         private Button join_btn;
+        private TextBox pasti_tb;
+        private TextBox vestiario_tb;
+        private TextBox movimento_tb;
+        private TextBox riposo_tb;
+        private ListView percorso_lv;
+        private NumericUpDown pesoZaino_num;
     }
 }

@@ -27,7 +27,7 @@ namespace AppenninoInMovimento.Utente
                 sql_string.addNewLine("    '" + newUser.Password + "'");
                 sql_string.addNewLine(")");
 
-                new Utils.DBUtils().queryScrittura(sql_string.Sql);
+                new Utils.DBUtils().EseguiQuery(sql_string.Sql);
             }
             catch (Exception ex)
             {
