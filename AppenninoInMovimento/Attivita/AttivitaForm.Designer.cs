@@ -105,7 +105,7 @@
             this.durata_lbl.Name = "durata_lbl";
             this.durata_lbl.Size = new System.Drawing.Size(54, 20);
             this.durata_lbl.TabIndex = 3;
-            this.durata_lbl.Text = "Durata";
+            this.durata_lbl.Text = "Durata [h]";
             // 
             // difficolata_lbl
             // 

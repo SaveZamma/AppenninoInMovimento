@@ -75,6 +75,31 @@ namespace AppenninoInMovimento.Utils
             }
         }
 
+        public int NewIntID(string tableName, string IDColName)
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            int newId = 1;
+
+            sql_string.addNewLine("SELECT ID FROM " + tableName + "");
+            sql_string.addNewLine("ORDER BY " + IDColName + " DESC");
+
+            var dt = dbu.queryLetturaDT(sql_string.Sql);
+
+            foreach (System.Data.DataRow r in dt.Rows)
+            {
+                newId += dbu.GetInt(r, "ID");
+            }
+
+            return newId;
+        }
+
+        private int GetInt(this System.Data.DataRow row, string fieldName)
+        {
+            return Convert.ToInt32(row[fieldName]);
+        }
+
         internal class ConnectionParameters
         {
             public SqlConnection getSqlConnection()
