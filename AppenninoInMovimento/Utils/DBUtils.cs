@@ -87,7 +87,15 @@ namespace AppenninoInMovimento.Utils
 
             foreach (System.Data.DataRow r in dt.Rows)
             {
-                newId += this.GetRowInt(r, "ID");
+                try
+                {
+                    newId += this.GetRowInt(r, "ID");
+                }
+                catch
+                {
+                    newId += this.GetRowInt(r, "idGruppo");
+                }
+                
             }
 
             return newId;

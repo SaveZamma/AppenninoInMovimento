@@ -227,6 +227,7 @@
             this.Controls.Add(this.save_btn);
             this.Name = "UtenteForm";
             this.Text = "Utente";
+            this.Load += new System.EventHandler(this.UtenteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

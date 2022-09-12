@@ -46,7 +46,7 @@ namespace AppenninoInMovimento.Utente
         {
             var sql_string = new Utils.SQLString();
             sql_string.addNewLine("SELECT * FROM Utenti");
-            sql_string.addNewLine("WHERE username = " + ParametriSessione.Username);
+            sql_string.addNewLine("WHERE username = '" + ParametriSessione.Username.Trim() + "'");
 
             var r = new Utils.DBUtils().queryLetturaDT(sql_string.Sql).Rows;
 
@@ -74,5 +74,7 @@ namespace AppenninoInMovimento.Utente
 
             dbu.EseguiQuery(sql_string.Sql);
         }
+
+        
     }
 }
