@@ -19,7 +19,7 @@ namespace AppenninoInMovimento.Attivita
             sql_string.addNewLine("    '" + newactivity.Descrizione + "',");
             sql_string.addNewLine("    '" + newactivity.DataInizio + "',");
             sql_string.addNewLine("    '" + newactivity.DataFine + "',");
-            sql_string.addNewLine("    " + newactivity.Durata + ",");
+            sql_string.addNewLine("    " + newactivity.Durata.ToString().Replace(",",".") + ",");
             sql_string.addNewLine("    " + newactivity.Difficolata + ",");
             sql_string.addNewLine("    '" + newactivity.PeriodoConsigliato + "',");
             sql_string.addNewLine("    " + newactivity.NumeroPartecipanti + ",");

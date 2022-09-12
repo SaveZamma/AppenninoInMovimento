@@ -26,9 +26,16 @@ namespace AppenninoInMovimento.Attivita
             {
                 fu.DisableControls(this);
                 fu.HideAndDisableControls(this.save_btn);
+
                 this.join_btn.Enabled =  true;
                 this.exit_btn.Enabled = true;
             }
+            fu.HideAndDisableControls(this.percorso_lbl);
+            fu.HideAndDisableControls(this.percorso_lv);
+            fu.HideAndDisableControls(this.luogo_lbl);
+            fu.HideAndDisableControls(this.luogo_tb);
+            fu.HideAndDisableControls(this.modificaLuogo_btn);
+            fu.HideAndDisableControls(this.modificaPercorso_btn);
         }
 
         private void modificaPercorso_btn_Click(object sender, EventArgs e)

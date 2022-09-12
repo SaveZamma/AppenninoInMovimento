@@ -72,6 +72,7 @@
             this.Controls.Add(this.results_lb);
             this.Name = "SearchForm";
             this.Text = "SearchForm";
+            this.Load += new System.EventHandler(this.SearchForm_Load);
             this.ResumeLayout(false);
 
         }

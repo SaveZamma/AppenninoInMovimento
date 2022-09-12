@@ -38,8 +38,8 @@ namespace AppenninoInMovimento.Utils.Entita
             get { return _pause; }
             set { _pause = value; }
         }
-        private int _ID_QUOTA = 0;
-        public int ID_QUOTA
+        private decimal _ID_QUOTA = 0;
+        public decimal ID_QUOTA
         {
             get { return _ID_QUOTA; }
             set { _ID_QUOTA = value; }
