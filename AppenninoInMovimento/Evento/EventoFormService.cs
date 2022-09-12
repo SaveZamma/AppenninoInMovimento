@@ -61,12 +61,32 @@ namespace AppenninoInMovimento.Evento
             sql_string.addNewLine("VALUES (");
             sql_string.addNewLine("    " + dbu.NewIntID("Eventi", "ID") + ",");
             sql_string.addNewLine("    " + evento.Pause + ",");
+            sql_string.addNewLine("    '" + evento.Descrizione + "',");
             sql_string.addNewLine("    '" + evento.AttivitaSvolte + "',");
             sql_string.addNewLine("    '',");
             sql_string.addNewLine("    " + evento.ID_INTRATTENIMENTO + ",");
-            sql_string.addNewLine("    " + evento.ID_QUOTA + ",");
-            sql_string.addNewLine("    '" + evento.Descrizione + "'");
+            sql_string.addNewLine("    '" + evento.ID_QUOTA + "'");
+            
             sql_string.addNewLine(")");
+
+            dbu.EseguiQuery(sql_string.Sql);
+        }
+
+        public void ModificaEvento(Utils.Entita.Eventi evento)
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            sql_string.addNewLine("UPDATE Eventi");
+            sql_string.addNewLine("SET");
+            sql_string.addNewLine("    numpause = " + evento.Pause + ",");
+            sql_string.addNewLine("    attivita = '" + evento.AttivitaSvolte + "',");
+            sql_string.addNewLine("    partecipanti = '"+evento.ElencoPartecipanti+"',");
+            sql_string.addNewLine("    ID_INTRATTENIMENTO = " + evento.ID_INTRATTENIMENTO + ",");
+            sql_string.addNewLine("    ID_QUOTA = " + evento.ID_QUOTA.ToString().Replace(",",".") + ",");
+            sql_string.addNewLine("    descrizione = '" + evento.Descrizione + "'");
+
+            sql_string.addNewLine("WHERE ID = " + ParametriSessione.ID_EVENTO);
 
             dbu.EseguiQuery(sql_string.Sql);
         }
@@ -119,12 +139,13 @@ namespace AppenninoInMovimento.Evento
             var res = new Utente.UtenteFormService().LeggiUtenti(sql_string.Sql);
 
             string[] retVal = { };
+            string[] returnString = { };
             foreach (System.Data.DataRow row in res.Rows)
             {
-                retVal.Append(" username: " + row["username"].ToString());
+                returnString = retVal.Append("username: " + row["username"].ToString()).ToArray();
             }
 
-            return retVal;
+            return returnString;
         }
     }
 }

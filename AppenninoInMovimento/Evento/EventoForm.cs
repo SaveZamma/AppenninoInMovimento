@@ -44,17 +44,25 @@ namespace AppenninoInMovimento.Evento
                 evento.AttivitaSvolte += (a + "_");
             }
             evento.Descrizione = this.nome_txtbox.Text;
+
             foreach (string p in this.elencoPartecipanti_lb.Items)
             {
                 evento.ElencoPartecipanti += (p + "_");
             }
+
             if(this.intrattenimento_tb.Text != "")
                 evento.ID_INTRATTENIMENTO = Int32.Parse(this.intrattenimento_tb.Text.Split(":")[1]);
             
-            evento.ID_QUOTA = Int32.Parse(this.quota_txtbox.Text.Split(":")[1].Split("S")[0]);
+            if(this.quota_txtbox.Text != "")
+                evento.ID_QUOTA = Decimal.Parse(this.quota_txtbox.Text.Split(":")[1].Split("S")[0]);
+            
             evento.Pause = Int32.Parse(this.pause_num.Value.ToString());
 
-            new EventoFormService().ScriviEvento(evento);
+            if(ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.WRITE)
+                new EventoFormService().ScriviEvento(evento);
+
+            if (ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.UPDATE)
+                new EventoFormService().ModificaEvento(evento);
         }
 
         private void exit_btn_Click(object sender, EventArgs e)
@@ -78,7 +86,10 @@ namespace AppenninoInMovimento.Evento
             {
                 attivitaEvento += i.ToString().Split(":")[1];
             }
-            new SearchForm(attivitaEvento).ShowDialog();
+            var form = new SearchForm(attivitaEvento);
+            var res = form.ShowDialog();
+
+            this.attivitaPreviste_lb.DataSource = form.attivitaEvento.Split("_");
         }
 
         private void modificaQuota_btn_Click(object sender, EventArgs e)
@@ -86,7 +97,7 @@ namespace AppenninoInMovimento.Evento
             var form = new QuotaIscrizione.QuotaIscrizione();
             var res = form.ShowDialog();
 
-            this.quota_txtbox.Text = "Prezzo: " + form.retPrezzo.ToString() + " Sconto: " + form.retSconto + "%";
+            this.quota_txtbox.Text = "Prezzo: " + form.retPrezzo.ToString().Replace(",", ".") + " Sconto: " + form.retSconto + "%";
         }
 
         private void EventoForm_Load(object sender, EventArgs e)
@@ -104,8 +115,11 @@ namespace AppenninoInMovimento.Evento
                 if(row != null)
                     this.intrattenimento_tb.Text = row["tipologia"] + "ID:" + row["ID"];
 
-                DataRow quota = new QuotaIscrizione.QuotaIscrizioneFormService().LeggiSingleQuota( Decimal.Parse(evento["ID_QUOTA"].ToString()));
-                this.quota_txtbox.Text = "Prezzo: " + quota["prezzo"] + " Sconto: " + quota["sconto"].ToString();
+                DataRow quota = new QuotaIscrizione.QuotaIscrizioneFormService().LeggiSingleQuota( Decimal.Parse(evento["ID_QUOTA"].ToString().Replace(",",".")));
+                
+                if(quota != null)
+                    this.quota_txtbox.Text = "Prezzo: " + quota["prezzo"] + " Sconto: " + quota["sconto"].ToString();
+                
                 this.nome_txtbox.Text = evento["descrizione"].ToString();
             }
         }

@@ -15,7 +15,7 @@ namespace AppenninoInMovimento.QuotaIscrizione
 
             sql_string.addNewLine("INSERT INTO QuotaIscrizioni");
             sql_string.addNewLine("VALUES (");
-            sql_string.addNewLine("    '" + prezzo + "',");
+            sql_string.addNewLine("    " + prezzo.ToString().Replace(",", ".") + ",");
             sql_string.addNewLine("    " + sconto);
             sql_string.addNewLine(")");
 
@@ -28,7 +28,7 @@ namespace AppenninoInMovimento.QuotaIscrizione
             var dbu = new Utils.DBUtils();
 
             sql_string.addNewLine("SELECT * FROM QuotaIscrizioni");
-            sql_string.addNewLine("WHERE prezzo = " + prezzo);
+            sql_string.addNewLine("WHERE prezzo = " + prezzo.ToString().Replace(",", "."));
 
             var dt = dbu.queryLetturaDT(sql_string.Sql);
 
