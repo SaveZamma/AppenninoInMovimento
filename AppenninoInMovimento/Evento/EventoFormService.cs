@@ -51,5 +51,80 @@ namespace AppenninoInMovimento.Evento
 
             return dbu.queryLetturaDT(sql_string.Sql);
         }
+
+        public void ScriviEvento(Utils.Entita.Eventi evento)
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            sql_string.addNewLine("INSERT INTO Eventi");
+            sql_string.addNewLine("VALUES (");
+            sql_string.addNewLine("    " + dbu.NewIntID("Eventi", "ID") + ",");
+            sql_string.addNewLine("    " + evento.Pause + ",");
+            sql_string.addNewLine("    '" + evento.AttivitaSvolte + "',");
+            sql_string.addNewLine("    '',");
+            sql_string.addNewLine("    " + evento.ID_INTRATTENIMENTO + ",");
+            sql_string.addNewLine("    " + evento.ID_QUOTA + ",");
+            sql_string.addNewLine("    '" + evento.Descrizione + "'");
+            sql_string.addNewLine(")");
+
+            dbu.EseguiQuery(sql_string.Sql);
+        }
+
+        public void JoinEvento()
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            sql_string.addNewLine("UPDATE Eventi");
+            sql_string.addNewLine("SET partecipanti = partecipanti + '_' + '" 
+                + ParametriSessione.UsernameSuperUser + "'");
+            sql_string.addNewLine("WHERE ID = " + ParametriSessione.ID_EVENTO);
+
+            dbu.EseguiQuery(sql_string.Sql);
+        }
+
+        public string[] LeggiElncoAttivita(string id_attivita)
+        {
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("WHERE ID IN ( 0");
+            foreach(var a in id_attivita.Split('_'))
+            {
+                if(a != "")
+                sql_string.addNewLine("    ," + a);
+            }
+            sql_string.addNewLine(")");
+
+            var res = new Attivita.AttivitaFormService().LeggiAttivita(sql_string.Sql);
+
+            string[] retVal = {};
+            foreach(System.Data.DataRow row in res.Rows)
+            {
+                retVal.Append(row["descrizione"].ToString()+" ID: "+ row["ID"].ToString());
+            }
+
+            return retVal;
+        }
+
+        public string[] LeggiPartecipanti(string usernamePartecipanti)
+        {
+            var sql_string = new Utils.SQLString();
+            sql_string.addNewLine("WHERE username IN ( '0'");
+            foreach (var p in usernamePartecipanti.Split('_'))
+            {
+                sql_string.addNewLine("    ,'" + p + "'");
+            }
+            sql_string.addNewLine(")");
+
+            var res = new Utente.UtenteFormService().LeggiUtenti(sql_string.Sql);
+
+            string[] retVal = { };
+            foreach (System.Data.DataRow row in res.Rows)
+            {
+                retVal.Append(" username: " + row["username"].ToString());
+            }
+
+            return retVal;
+        }
     }
 }

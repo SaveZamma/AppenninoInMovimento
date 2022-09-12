@@ -197,7 +197,7 @@
             // cognome_lbl
             // 
             this.cognome_lbl.AutoSize = true;
-            this.cognome_lbl.Location = new System.Drawing.Point(491, 95);
+            this.cognome_lbl.Location = new System.Drawing.Point(491, 100);
             this.cognome_lbl.Name = "cognome_lbl";
             this.cognome_lbl.Size = new System.Drawing.Size(74, 20);
             this.cognome_lbl.TabIndex = 17;
@@ -205,7 +205,7 @@
             // 
             // cognome_tb
             // 
-            this.cognome_tb.Location = new System.Drawing.Point(578, 92);
+            this.cognome_tb.Location = new System.Drawing.Point(578, 97);
             this.cognome_tb.Name = "cognome_tb";
             this.cognome_tb.Size = new System.Drawing.Size(224, 27);
             this.cognome_tb.TabIndex = 18;
@@ -254,6 +254,7 @@
             this.nuovoEvento_btn.TabIndex = 23;
             this.nuovoEvento_btn.Text = "Nuovo Evento";
             this.nuovoEvento_btn.UseVisualStyleBackColor = true;
+            this.nuovoEvento_btn.Click += new System.EventHandler(this.nuovoEvento_btn_Click);
             // 
             // nuovoGruppo_btn
             // 
@@ -263,6 +264,7 @@
             this.nuovoGruppo_btn.TabIndex = 27;
             this.nuovoGruppo_btn.Text = "Nuovo Gruppo";
             this.nuovoGruppo_btn.UseVisualStyleBackColor = true;
+            this.nuovoGruppo_btn.Click += new System.EventHandler(this.nuovoGruppo_btn_Click);
             // 
             // descrizioneGruppo_tb
             // 

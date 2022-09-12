@@ -32,21 +32,21 @@
             this.nome_txtbox = new System.Windows.Forms.TextBox();
             this.pause_lbl = new System.Windows.Forms.Label();
             this.pause_num = new System.Windows.Forms.NumericUpDown();
-            this.numPartecipanti_lbl = new System.Windows.Forms.Label();
-            this.numPartecipanti_num = new System.Windows.Forms.NumericUpDown();
+            this.elencoPartecipanti_lbl = new System.Windows.Forms.Label();
             this.quota_lbl = new System.Windows.Forms.Label();
             this.quota_txtbox = new System.Windows.Forms.TextBox();
             this.attivita_lbl = new System.Windows.Forms.Label();
-            this.attivita_lv = new System.Windows.Forms.ListView();
             this.intrattenimento_lbl = new System.Windows.Forms.Label();
-            this.intrattenimenti_lv = new System.Windows.Forms.ListView();
             this.modificaAttivita_btn = new System.Windows.Forms.Button();
             this.modificaIntrattenimento_btn = new System.Windows.Forms.Button();
             this.salva_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
             this.subscribe_btn = new System.Windows.Forms.Button();
+            this.elencoPartecipanti_lb = new System.Windows.Forms.ListBox();
+            this.attivitaPreviste_lb = new System.Windows.Forms.ListBox();
+            this.intrattenimento_tb = new System.Windows.Forms.TextBox();
+            this.modificaQuota_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pause_num)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).BeginInit();
             this.SuspendLayout();
             // 
             // nome_lbl
@@ -81,27 +81,19 @@
             this.pause_num.Size = new System.Drawing.Size(150, 27);
             this.pause_num.TabIndex = 3;
             // 
-            // numPartecipanti_lbl
+            // elencoPartecipanti_lbl
             // 
-            this.numPartecipanti_lbl.AutoSize = true;
-            this.numPartecipanti_lbl.Location = new System.Drawing.Point(30, 122);
-            this.numPartecipanti_lbl.Name = "numPartecipanti_lbl";
-            this.numPartecipanti_lbl.Size = new System.Drawing.Size(145, 20);
-            this.numPartecipanti_lbl.TabIndex = 3;
-            this.numPartecipanti_lbl.Text = "Numero Partecipanti";
-            // 
-            // numPartecipanti_num
-            // 
-            this.numPartecipanti_num.Enabled = false;
-            this.numPartecipanti_num.Location = new System.Drawing.Point(181, 120);
-            this.numPartecipanti_num.Name = "numPartecipanti_num";
-            this.numPartecipanti_num.Size = new System.Drawing.Size(150, 27);
-            this.numPartecipanti_num.TabIndex = 4;
+            this.elencoPartecipanti_lbl.AutoSize = true;
+            this.elencoPartecipanti_lbl.Location = new System.Drawing.Point(30, 122);
+            this.elencoPartecipanti_lbl.Name = "elencoPartecipanti_lbl";
+            this.elencoPartecipanti_lbl.Size = new System.Drawing.Size(135, 20);
+            this.elencoPartecipanti_lbl.TabIndex = 3;
+            this.elencoPartecipanti_lbl.Text = "Elenco Partecipanti";
             // 
             // quota_lbl
             // 
             this.quota_lbl.AutoSize = true;
-            this.quota_lbl.Location = new System.Drawing.Point(30, 167);
+            this.quota_lbl.Location = new System.Drawing.Point(30, 283);
             this.quota_lbl.Name = "quota_lbl";
             this.quota_lbl.Size = new System.Drawing.Size(116, 20);
             this.quota_lbl.TabIndex = 5;
@@ -110,7 +102,7 @@
             // quota_txtbox
             // 
             this.quota_txtbox.Enabled = false;
-            this.quota_txtbox.Location = new System.Drawing.Point(152, 164);
+            this.quota_txtbox.Location = new System.Drawing.Point(152, 280);
             this.quota_txtbox.Name = "quota_txtbox";
             this.quota_txtbox.Size = new System.Drawing.Size(179, 27);
             this.quota_txtbox.TabIndex = 6;
@@ -118,49 +110,34 @@
             // attivita_lbl
             // 
             this.attivita_lbl.AutoSize = true;
-            this.attivita_lbl.Location = new System.Drawing.Point(30, 214);
+            this.attivita_lbl.Location = new System.Drawing.Point(30, 357);
             this.attivita_lbl.Name = "attivita_lbl";
             this.attivita_lbl.Size = new System.Drawing.Size(112, 20);
             this.attivita_lbl.TabIndex = 7;
             this.attivita_lbl.Text = "Attività Previste";
             // 
-            // attivita_lv
-            // 
-            this.attivita_lv.Location = new System.Drawing.Point(30, 237);
-            this.attivita_lv.Name = "attivita_lv";
-            this.attivita_lv.Size = new System.Drawing.Size(396, 121);
-            this.attivita_lv.TabIndex = 8;
-            this.attivita_lv.UseCompatibleStateImageBehavior = false;
-            // 
             // intrattenimento_lbl
             // 
             this.intrattenimento_lbl.AutoSize = true;
-            this.intrattenimento_lbl.Location = new System.Drawing.Point(30, 380);
+            this.intrattenimento_lbl.Location = new System.Drawing.Point(30, 523);
             this.intrattenimento_lbl.Name = "intrattenimento_lbl";
             this.intrattenimento_lbl.Size = new System.Drawing.Size(112, 20);
             this.intrattenimento_lbl.TabIndex = 9;
             this.intrattenimento_lbl.Text = "Intrattenimento";
             // 
-            // intrattenimenti_lv
-            // 
-            this.intrattenimenti_lv.Location = new System.Drawing.Point(30, 403);
-            this.intrattenimenti_lv.Name = "intrattenimenti_lv";
-            this.intrattenimenti_lv.Size = new System.Drawing.Size(396, 121);
-            this.intrattenimenti_lv.TabIndex = 10;
-            this.intrattenimenti_lv.UseCompatibleStateImageBehavior = false;
-            // 
             // modificaAttivita_btn
             // 
-            this.modificaAttivita_btn.Location = new System.Drawing.Point(332, 205);
+            this.modificaAttivita_btn.Location = new System.Drawing.Point(332, 348);
             this.modificaAttivita_btn.Name = "modificaAttivita_btn";
             this.modificaAttivita_btn.Size = new System.Drawing.Size(94, 29);
             this.modificaAttivita_btn.TabIndex = 11;
             this.modificaAttivita_btn.Text = "Modifica";
             this.modificaAttivita_btn.UseVisualStyleBackColor = true;
+            this.modificaAttivita_btn.Click += new System.EventHandler(this.modificaAttivita_btn_Click);
             // 
             // modificaIntrattenimento_btn
             // 
-            this.modificaIntrattenimento_btn.Location = new System.Drawing.Point(332, 371);
+            this.modificaIntrattenimento_btn.Location = new System.Drawing.Point(332, 514);
             this.modificaIntrattenimento_btn.Name = "modificaIntrattenimento_btn";
             this.modificaIntrattenimento_btn.Size = new System.Drawing.Size(94, 29);
             this.modificaIntrattenimento_btn.TabIndex = 12;
@@ -169,57 +146,97 @@
             // 
             // salva_btn
             // 
-            this.salva_btn.Location = new System.Drawing.Point(217, 566);
+            this.salva_btn.Location = new System.Drawing.Point(217, 626);
             this.salva_btn.Name = "salva_btn";
             this.salva_btn.Size = new System.Drawing.Size(94, 29);
             this.salva_btn.TabIndex = 13;
             this.salva_btn.Text = "Salva";
             this.salva_btn.UseVisualStyleBackColor = true;
+            this.salva_btn.Click += new System.EventHandler(this.salva_btn_Click);
             // 
             // exit_btn
             // 
-            this.exit_btn.Location = new System.Drawing.Point(332, 566);
+            this.exit_btn.Location = new System.Drawing.Point(332, 626);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(94, 29);
             this.exit_btn.TabIndex = 14;
             this.exit_btn.Text = "Esci";
             this.exit_btn.UseVisualStyleBackColor = true;
+            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
             // 
             // subscribe_btn
             // 
-            this.subscribe_btn.Location = new System.Drawing.Point(101, 566);
+            this.subscribe_btn.Location = new System.Drawing.Point(101, 626);
             this.subscribe_btn.Name = "subscribe_btn";
             this.subscribe_btn.Size = new System.Drawing.Size(94, 29);
             this.subscribe_btn.TabIndex = 15;
             this.subscribe_btn.Text = "Iscriviti";
             this.subscribe_btn.UseVisualStyleBackColor = true;
+            this.subscribe_btn.Click += new System.EventHandler(this.subscribe_btn_Click);
+            // 
+            // elencoPartecipanti_lb
+            // 
+            this.elencoPartecipanti_lb.FormattingEnabled = true;
+            this.elencoPartecipanti_lb.ItemHeight = 20;
+            this.elencoPartecipanti_lb.Location = new System.Drawing.Point(30, 154);
+            this.elencoPartecipanti_lb.Name = "elencoPartecipanti_lb";
+            this.elencoPartecipanti_lb.Size = new System.Drawing.Size(396, 104);
+            this.elencoPartecipanti_lb.TabIndex = 16;
+            // 
+            // attivitaPreviste_lb
+            // 
+            this.attivitaPreviste_lb.FormattingEnabled = true;
+            this.attivitaPreviste_lb.ItemHeight = 20;
+            this.attivitaPreviste_lb.Location = new System.Drawing.Point(30, 380);
+            this.attivitaPreviste_lb.Name = "attivitaPreviste_lb";
+            this.attivitaPreviste_lb.Size = new System.Drawing.Size(396, 104);
+            this.attivitaPreviste_lb.TabIndex = 17;
+            // 
+            // intrattenimento_tb
+            // 
+            this.intrattenimento_tb.Enabled = false;
+            this.intrattenimento_tb.Location = new System.Drawing.Point(30, 546);
+            this.intrattenimento_tb.Name = "intrattenimento_tb";
+            this.intrattenimento_tb.Size = new System.Drawing.Size(396, 27);
+            this.intrattenimento_tb.TabIndex = 18;
+            // 
+            // modificaQuota_btn
+            // 
+            this.modificaQuota_btn.Location = new System.Drawing.Point(332, 280);
+            this.modificaQuota_btn.Name = "modificaQuota_btn";
+            this.modificaQuota_btn.Size = new System.Drawing.Size(94, 29);
+            this.modificaQuota_btn.TabIndex = 19;
+            this.modificaQuota_btn.Text = "Modifica";
+            this.modificaQuota_btn.UseVisualStyleBackColor = true;
+            this.modificaQuota_btn.Click += new System.EventHandler(this.modificaQuota_btn_Click);
             // 
             // EventoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 607);
+            this.ClientSize = new System.Drawing.Size(465, 666);
+            this.Controls.Add(this.modificaQuota_btn);
+            this.Controls.Add(this.intrattenimento_tb);
+            this.Controls.Add(this.attivitaPreviste_lb);
+            this.Controls.Add(this.elencoPartecipanti_lb);
             this.Controls.Add(this.subscribe_btn);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.salva_btn);
             this.Controls.Add(this.modificaIntrattenimento_btn);
             this.Controls.Add(this.modificaAttivita_btn);
-            this.Controls.Add(this.intrattenimenti_lv);
             this.Controls.Add(this.intrattenimento_lbl);
-            this.Controls.Add(this.attivita_lv);
             this.Controls.Add(this.attivita_lbl);
             this.Controls.Add(this.quota_txtbox);
             this.Controls.Add(this.quota_lbl);
-            this.Controls.Add(this.numPartecipanti_num);
-            this.Controls.Add(this.numPartecipanti_lbl);
+            this.Controls.Add(this.elencoPartecipanti_lbl);
             this.Controls.Add(this.pause_num);
             this.Controls.Add(this.pause_lbl);
             this.Controls.Add(this.nome_txtbox);
             this.Controls.Add(this.nome_lbl);
             this.Name = "EventoForm";
             this.Text = "EventoForm";
+            this.Load += new System.EventHandler(this.EventoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pause_num)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPartecipanti_num)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,18 +248,19 @@
         private TextBox nome_txtbox;
         private Label pause_lbl;
         private NumericUpDown pause_num;
-        private Label numPartecipanti_lbl;
-        private NumericUpDown numPartecipanti_num;
+        private Label elencoPartecipanti_lbl;
         private Label quota_lbl;
         private TextBox quota_txtbox;
         private Label attivita_lbl;
-        private ListView attivita_lv;
         private Label intrattenimento_lbl;
-        private ListView intrattenimenti_lv;
         private Button modificaAttivita_btn;
         private Button modificaIntrattenimento_btn;
         private Button salva_btn;
         private Button exit_btn;
         private Button subscribe_btn;
+        private ListBox elencoPartecipanti_lb;
+        private ListBox attivitaPreviste_lb;
+        private TextBox intrattenimento_tb;
+        private Button modificaQuota_btn;
     }
 }

@@ -85,5 +85,17 @@ namespace AppenninoInMovimento.MainPage
 
             new MainPageFormService().OpenGroupSearchResult(sql_string.Sql);
         }
+
+        private void nuovoEvento_btn_Click(object sender, EventArgs e)
+        {
+            ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.WRITE;
+            new Evento.EventoForm().ShowDialog();
+        }
+
+        private void nuovoGruppo_btn_Click(object sender, EventArgs e)
+        {
+            ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.WRITE;
+            new Gruppo.GruppoForm().ShowDialog();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace AppenninoInMovimento.MainPage
             ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.UPDATE;
             if (this.SetCorrespondingParamsID())
             {
-                var form = this.GetCorrespodingFrom();
+                var form = this.GetCorrespodingForm();
                 form.ShowDialog();
             }
         }
@@ -50,12 +50,12 @@ namespace AppenninoInMovimento.MainPage
             ParametriSessione.TipoOperazioneDB = enum_TipoOperazioneDB.READ;
             if (this.SetCorrespondingParamsID())
             {
-                var form = this.GetCorrespodingFrom();
+                var form = this.GetCorrespodingForm();
                 form.ShowDialog();
             }
         }
 
-        private Form GetCorrespodingFrom()
+        private Form GetCorrespodingForm()
         {
             try
             {

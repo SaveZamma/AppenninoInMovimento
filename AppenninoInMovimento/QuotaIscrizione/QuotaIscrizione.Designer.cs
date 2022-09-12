@@ -33,6 +33,7 @@
             this.sconto_lbl = new System.Windows.Forms.Label();
             this.sconto_num = new System.Windows.Forms.NumericUpDown();
             this.save_btn = new System.Windows.Forms.Button();
+            this.close_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prezzo_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sconto_num)).BeginInit();
             this.SuspendLayout();
@@ -68,21 +69,34 @@
             this.sconto_num.Name = "sconto_num";
             this.sconto_num.Size = new System.Drawing.Size(150, 27);
             this.sconto_num.TabIndex = 3;
+            this.sconto_num.DecimalPlaces = 0;
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(118, 155);
+            this.save_btn.Location = new System.Drawing.Point(49, 152);
             this.save_btn.Name = "save_btn";
             this.save_btn.Size = new System.Drawing.Size(94, 29);
             this.save_btn.TabIndex = 4;
             this.save_btn.Text = "Salva";
             this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+            // 
+            // close_btn
+            // 
+            this.close_btn.Location = new System.Drawing.Point(192, 152);
+            this.close_btn.Name = "close_btn";
+            this.close_btn.Size = new System.Drawing.Size(94, 29);
+            this.close_btn.TabIndex = 5;
+            this.close_btn.Text = "Chiudi";
+            this.close_btn.UseVisualStyleBackColor = true;
+            this.close_btn.Click += new System.EventHandler(this.close_btn_Click);
             // 
             // QuotaIscrizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 221);
+            this.Controls.Add(this.close_btn);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.sconto_num);
             this.Controls.Add(this.sconto_lbl);
@@ -94,7 +108,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sconto_num)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -104,5 +117,6 @@
         private Label sconto_lbl;
         private NumericUpDown sconto_num;
         private Button save_btn;
+        private Button close_btn;
     }
 }

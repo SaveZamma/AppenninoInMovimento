@@ -44,5 +44,11 @@ namespace AppenninoInMovimento.Utils.Entita
             get { return _ID_QUOTA; }
             set { _ID_QUOTA = value; }
         }
+        private string _descrizione = "";
+        public string Descrizione
+        {
+            get { return _descrizione; }
+            set { _descrizione = value; }
+        }
     }
 }
