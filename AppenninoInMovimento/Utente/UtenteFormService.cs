@@ -75,6 +75,20 @@ namespace AppenninoInMovimento.Utente
             dbu.EseguiQuery(sql_string.Sql);
         }
 
-        
+        public void AddFriend()
+        {
+            var sql_string = new Utils.SQLString();
+            var dbu = new Utils.DBUtils();
+
+            sql_string.addNewLine("INSERT INTO Amicizie");
+            sql_string.addNewLine("VALUES (");
+            sql_string.addNewLine("    '" + ParametriSessione.UsernameSuperUser.Trim() + "',");
+            sql_string.addNewLine("    '" + ParametriSessione.Username.Trim() + "'");
+            sql_string.addNewLine(")");
+
+            dbu.EseguiQuery(sql_string.Sql);
+        }
     }
+
+
 }

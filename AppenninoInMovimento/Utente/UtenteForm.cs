@@ -28,8 +28,8 @@ namespace AppenninoInMovimento
             if (ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.READ)
             {
                 fu.DisableControls(this);
-                //this.amicizia_btn.Enabled = true;
-                //this.amicizia_btn.Show();
+                this.amicizia_btn.Enabled = true;
+                this.amicizia_btn.Show();
             }
             else if (ParametriSessione.TipoOperazioneDB == enum_TipoOperazioneDB.WRITE)
             {                
@@ -70,7 +70,7 @@ namespace AppenninoInMovimento
 
         private void amicizia_btn_Click(object sender, EventArgs e)
         {
-
+            new Utente.UtenteFormService().AddFriend();
         }
 
         private void UtenteForm_Load(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace AppenninoInMovimento
                 this.nome_txtbox.Text = res["nome"].ToString();
                 this.cognome_txtbox.Text = res["cognome"].ToString();
                 this.DataNascita_datePk.Value = DateTime.Parse(res["dataNascita"].ToString());
-                this.nome_txtbox.Text = res["numeroTelefono"].ToString();
+                this.cel_txtBox.Text = res["numeroTelefono"].ToString();
                 this.nome_txtbox.Text = res["nome"].ToString();
                 this.CF_txtbox.Text = res["CF"].ToString();
             }

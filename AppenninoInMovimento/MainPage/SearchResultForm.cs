@@ -156,7 +156,12 @@ namespace AppenninoInMovimento.MainPage
                 if(this.tipoRicerca == MainPageForm.enum_TipoRicerca.ATTIVITA)
                     this.result_lb.Items.Add(r["descrizione"] + " " + r["valutazione"].ToString() + " ID: " + r["ID"].ToString());
                 if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.UTENTE)
+                {
                     this.result_lb.Items.Add(r["nome"] + " " + r["cognome"] + " username: " + r["username"]);
+                    new Utils.FromUtils().HideAndDisableControls(this.update_btn);
+                    new Utils.FromUtils().HideAndDisableControls(this.remove_btn);
+                }
+                    
                 if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.GRUPPO)
                     this.result_lb.Items.Add(r["nome"] + " ID: " + r["idGruppo"].ToString());
                 if (this.tipoRicerca == MainPageForm.enum_TipoRicerca.EVENTO)
