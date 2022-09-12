@@ -33,7 +33,8 @@ namespace AppenninoInMovimento.MainPage
         }
         private void MainPageForm_Load(object sender, EventArgs e)
         {
-
+            var fu = new Utils.FromUtils();
+            fu.HideAndDisableControls(this.modificaDatiUtente_btn);
         }
 
         private void ricercaAttivita_btn_Click(object sender, EventArgs e)
